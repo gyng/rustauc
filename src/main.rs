@@ -1,11 +1,11 @@
 #![feature(custom_derive, custom_attribute, plugin)]
 #![plugin(diesel_codegen, dotenv_macros)]
-#[macro_use]
+
 
 pub mod schema;
 pub mod models;
 
-extern crate diesel;
+#[macro_use] extern crate diesel;
 extern crate dotenv;
 extern crate iron;
 extern crate router;
