@@ -13,3 +13,5 @@ dotenv_macros = "0.8.0"
 
 [dependencies.diesel_codegen]
 git = "https://github.com/sgrif/diesel/"
+default-features = false
+features = ["nightly", "postgres"]
