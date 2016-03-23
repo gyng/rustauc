@@ -6,12 +6,8 @@ authors = ["Ng Guoyou <ng.guoyou@gmail.com>"]
 [dependencies]
 iron = '*'
 rustc-serialize ="*"
-router= "*"
+router = "*"
 diesel = "0.5.0"
+diesel_codegen = { version = "0.5.0", default-features = false, features = ["nightly", "postgres"] }
 dotenv = "0.8.0"
 dotenv_macros = "0.8.0"
-
-[dependencies.diesel_codegen]
-git = "https://github.com/sgrif/diesel/"
-default-features = false
-features = ["nightly", "postgres"]

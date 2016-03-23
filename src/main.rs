@@ -25,7 +25,6 @@ use rustc_serialize::json;
 
 use self::models::{Post, NewPost};
 
-
 #[derive(RustcEncodable, RustcDecodable)]
 struct Greeting {
     msg: String
@@ -59,8 +58,8 @@ fn terrible_serialization_hack(post: &Post) -> rustc_serialize::json::Json {
     doc.insert("title".into(), Json::String(post.title.clone()));
     doc.insert("body".into(), Json::String(post.body.clone()));
     doc.insert("published".into(), Json::Boolean(post.published));
-    
-    Json::Object(doc)   
+
+    Json::Object(doc)
 }
 
 fn set_greeting(request: &mut Request, greeting: &mut Greeting, conn: &PgConnection) -> IronResult<Response> {
@@ -89,7 +88,7 @@ fn main() {
 
     let mut router = Router::new();
     router.get("/", move |r: &mut Request| hello_world(r, &greeting.lock().unwrap()));
-    router.post("/set", move |r: &mut Request| {
+    router.post("/post/new", move |r: &mut Request| {
         set_greeting(r, &mut greeting_clone.lock().unwrap(), &establish_connection())
     });
 
@@ -103,6 +102,7 @@ fn main() {
 mod tests {
     #[test]
     fn freedom_is_slavery() {
+        // It compiles!
         assert!(true);
     }
 }
